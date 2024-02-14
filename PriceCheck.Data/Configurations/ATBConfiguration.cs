@@ -18,6 +18,7 @@ namespace PriceCheck.Data.Configurations
             builder.Property(x => x.ProductName).HasMaxLength(200);
             builder.Property(x => x.ProductPrice).HasMaxLength(10);
             builder.Property(x => x.ProductLink).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.ProductImage);
 
         }
     }

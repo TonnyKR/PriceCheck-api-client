@@ -6,7 +6,6 @@ using PriceCheck.BusinessLogic.Dtos.ATB;
 using PriceCheck.BusinessLogic.Interfaces;
 using PriceCheck.Data.Entities;
 using PriceCheck.Data.Interfaces;
-using PriceCheck.Data.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +69,23 @@ namespace PriceCheck.BusinessLogic.Services
             }
 
             await _ATBservice.UpdateShopProduct(product.Id, new ATBUpdateDto { ProductPrice = price });
+        }
+
+        public async Task ParseImage(string url)
+        {
+            var html = await DownloadUrl(url);
+            var parser = new HtmlParser();
+            var document = await parser.ParseDocumentAsync(html);
+
+            var product = await _ATBservice.GetShopProductByLink(url);
+
+            string name = null;
+            if (document.QuerySelector("h1") != null)
+            {
+                name = document.QuerySelector("h1").TextContent;
+            }
+
+            await _ATBservice.UpdateShopProduct(product.Id, new ATBUpdateDto { ProductName = name });
         }
         public async Task<string> DownloadUrl(string url)
         {

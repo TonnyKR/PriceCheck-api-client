@@ -33,5 +33,6 @@ namespace PriceCheck.Data
             var assembly = typeof(ConfigurationsAssemblyMarker).Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(assembly);
         }
+        
     }
 }

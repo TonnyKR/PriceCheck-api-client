@@ -12,5 +12,6 @@ namespace PriceCheck.Data.Entities
         public string? ProductName { get; set; }
         public string? ProductPrice { get; set; }
         public string ProductLink { get; set; }
+        public byte[] ProductImage { get; set; }
     }
 }

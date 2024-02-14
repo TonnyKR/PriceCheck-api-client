@@ -1,49 +1,61 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
 
     useEffect(() => {
         populateWeatherData();
+        getATBproducts();
     }, []);
 
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
+    
     return (
+        <>
+        <div className="container-fluid" style={{backgroundColor: "#FFA235"}}>
+            <div className="row text-center">
+                <img className="mx-auto d-block" src="logo.jfif" style={{maxWidth: "20%", maxHeight: "20%"}} alt="PriceCheck"></img> 
+            </div>
+        </div>
+
+            <nav className="navbar navbar-expand-sm bg-light navbar-light">
+                <div className="container-fluid">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <a className="nav-link active" href="#">Active</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Link</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Link</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>           
+
+
         <div>
             <h1 id="tabelLabel">Weather forecast</h1>
             <p>This component demonstrates fetching data from the server.</p>
             {contents}
+            {prod}
         </div>
+        </>
     );
     
     async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
+        const response = await fetch('api/weatherforecast');
         const data = await response.json();
         setForecasts(data);
     }
+    async function getATBproducts(){
+        const response = await fetch('api/atb');
+        const data = await response.json();
+        setProducts(data);
+    }
+
 }
 
 export default App;

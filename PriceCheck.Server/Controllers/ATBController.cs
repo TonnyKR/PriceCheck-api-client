@@ -5,7 +5,7 @@ using PriceCheck.BusinessLogic.Services;
 
 namespace PriceCheck.API.Controllers
 {
-    [Route ("api/ATB")]
+    [Route("api/atb")]
     public class ATBController : BaseController
     {
         private readonly IATBService _ATBService;
@@ -30,7 +30,8 @@ namespace PriceCheck.API.Controllers
             return Ok(product);
         }
 
-        [HttpGet("/SearchByName{name}")]
+        [HttpGet]
+        [Route("searchByName/{name}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ATBDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetProductsByName(string name)
