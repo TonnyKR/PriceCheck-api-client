@@ -15,7 +15,7 @@ function Search()
       };
 
       const prod = products === undefined 
-    ? <p>L</p>
+    ? <p></p>
     : <div class="album py-5 bg-dark">
         <div class="container">
           <div class="row">

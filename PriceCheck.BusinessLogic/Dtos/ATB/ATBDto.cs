@@ -20,5 +20,8 @@ namespace PriceCheck.BusinessLogic.Dtos.ATB
         [MaxLength(200)]
         [DataType(DataType.Text)]
         public string ProductLink { get; set; }
+        [MaxLength(200)]
+        [DataType(DataType.Text)]
+        public string? ProductImage { get; set; }
     }
 }

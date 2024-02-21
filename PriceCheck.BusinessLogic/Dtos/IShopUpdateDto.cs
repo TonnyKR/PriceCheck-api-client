@@ -15,5 +15,7 @@ namespace PriceCheck.BusinessLogic.Dtos
         public string? ProductPrice { get; set; }
         [MaxLength(100)]
         public string? ProductLink { get; set; }
+        [MaxLength(200)]
+        public string? ProductImage { get; set; }
     }
 }

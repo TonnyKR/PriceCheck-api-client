@@ -7,7 +7,7 @@ function ProductForm(product)
         <>
             <div className="col-sm-2">
               <div className="card mb-4 box-shadow">
-                <img className="card-img-top" alt={"1"} style={{height: "175px", width: "100%", display: "block"}} src={logo} data-holder-rendered="true"></img>
+                <img className="card-img-top" alt={"1"} style={{height: "175px", width: "100%", display: "block"}} src={product.productImage} data-holder-rendered="true"></img>
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
